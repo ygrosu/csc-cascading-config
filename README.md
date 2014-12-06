@@ -13,8 +13,7 @@ So yaml and python and then back to jvms.
 
 
 
-for
-
+Here is an example
 ```
 ---
 basic_inst:
@@ -42,5 +41,17 @@ lnmp:
   mem: 2gb
   overrides:
     - !Add{ packages: [nginx] }
+
+```
+
+and using it:
+``` Python
+csc = CascadingConfig(items={'a': { 'k1': v1, 'k2': v2} , 'b':{ 'based_on': 'a', 'k3': v3} })
+csc = YamlCascadingConfig(text='... yaml text ...')
+csc = YamlCascadingConfig(flname=yaml_file_name)
+
+b_data = csc.get_dict('b')
+...
+
 
 ```
